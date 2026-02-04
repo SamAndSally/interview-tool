@@ -147,7 +147,7 @@ if st.session_state.setup_complete and not st.session_state.feedback_shown and n
 
     ## Handle user input and OpenAI response
     # Let's make sure the input is only accepted if the count of messages is below 5
-    if st.session_state.user_message_count <2:
+    if st.session_state.user_message_count <4:
     #assign a value to prompt and check if not empty
         if prompt := st.chat_input("Your Answer.", max_chars=1000):
             st.session_state.messages.append({"role":"user","content":prompt})
@@ -156,7 +156,7 @@ if st.session_state.setup_complete and not st.session_state.feedback_shown and n
                 st.markdown(prompt)
             
             # Let's ensure that the chatbot stops responding after a specific number of user messages
-            if st.session_state.user_message_count < 2:
+            if st.session_state.user_message_count < 4:
                 #We create another chat message block for the assistance response
                 #  and call the openAI API to generate the response
                 # We create a dedicated context block (with ....) to display the assistance response in the chat interface
@@ -177,7 +177,7 @@ if st.session_state.setup_complete and not st.session_state.feedback_shown and n
 
             st.session_state.user_message_count +=1
 
-    if st.session_state.user_message_count >=2:
+    if st.session_state.user_message_count >=4:
         st.session_state.chat_complete = True
 
 
